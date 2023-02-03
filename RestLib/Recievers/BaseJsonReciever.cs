@@ -10,7 +10,7 @@ namespace RestLib.Recievers
     {
         internal string json;
 
-        protected BaseJsonReciever(ILog iLog, IConfigurationProvider configurationProvider) : base(iLog, configurationProvider)
+        public BaseJsonReciever(ILog iLog, IConfigurationProvider configurationProvider) : base(iLog, configurationProvider)
         {
         }
         internal async Task GetExchangeRateListAsync()
