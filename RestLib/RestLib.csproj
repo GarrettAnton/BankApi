@@ -84,11 +84,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recievers\BaseJsonReciever.cs" />
     <Compile Include="Recievers\BaseReciever.cs" />
     <Compile Include="Recievers\MinFinUkraine\MinFinReciever.cs" />
     <Compile Include="Recievers\MinFinUkraine\Models\SummaryBankCurrencies.cs" />
     <Compile Include="Recievers\NationalBankOfUkraine\Models\Currency.cs" />
     <Compile Include="Recievers\NationalBankOfUkraine\NbyReciever.cs" />
+    <Compile Include="Recievers\PrivateBankUkraine\Models\PrivateBankCurrency.cs" />
+    <Compile Include="Recievers\PrivateBankUkraine\PrivatBankReciever.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BankApiInterfaces\BankApiInterfaces.csproj">

@@ -10,9 +10,8 @@ using System.Threading.Tasks;
 
 namespace RestLib.Recievers.NationalBankOfUkraine
 {
-    public class NbyReciever : BaseReciever
+    public class NbyReciever : BaseJsonReciever
     {
-        internal string json;
         internal List<Currency> currencies;
         public NbyReciever(ILog iLog, IConfigurationProvider configurationProvider) : base(iLog, configurationProvider)
         {
@@ -20,42 +19,14 @@ namespace RestLib.Recievers.NationalBankOfUkraine
 
         public override string USD { get
             {
-                _log.Error($"Try to get USD exchange rate");
+                _log.Info($"Try to get USD exchange rate");
                 return GetExchangeRate("USD");
             }
         }
         public override string EUR { get
             {
-                _log.Error($"Try to get EUR exchange rate");
+                _log.Info($"Try to get EUR exchange rate");
                 return GetExchangeRate("EUR");
-            }
-        }
-
-        internal async Task GetExchangeRateListAsync()
-        {
-            try
-            {
-                var request = new RestRequest(_resource, Method.Get);
-                var response = await client.GetAsync(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    if (response.Content is null)
-                    {
-                        _log.Error($"The responce content is empty");
-                        throw new Exception($"The responce content is empty");
-                    }
-                    json = response.Content;
-                }
-                else
-                {
-                    _log.Error($"The responce was broken. Status code is {response.StatusCode}");
-                    throw new Exception($"The responce was broken. Status code is {response.StatusCode}");
-                }
-            }
-            catch (Exception e)
-            {
-                _log.Error($"The error was ocured with the message '{e.Message}'");
-                throw;
             }
         }
 
