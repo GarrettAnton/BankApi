@@ -50,6 +50,7 @@ namespace BankApi
                 {
                     excelProcessor.Dispose();
                     reciever.Dispose();
+                    throw;
                 }
             }
         }
